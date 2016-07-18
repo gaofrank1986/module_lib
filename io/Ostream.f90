@@ -9,7 +9,8 @@ module io
     contains
         procedure,private :: initialize
         procedure ::  fout
-        procedure ::  update_header
+        procedure ::  set_header
+        procedure ::  get_header
         procedure,private:: toString_int
         !procedure,private :: toString_real8
         !procedure,private :: toString_real4
@@ -33,14 +34,18 @@ contains
         call constructor%initialize(string,port)
     end function
 
-!    function constructor2(string,port)
-        !type(Ostream) ::constructor2
-        !character(len=*),intent(in)::string
-        !integer,intent(in) :: port(:)
-        !call constructor2%initialize(string,port)
-    !end function
 
-    subroutine update_header(this,string)
+    function get_header(this)
+        character(:),allocatable :: get_header,tmp
+        class (Ostream) ::  this
+        !write 
+        tmp = trim(this%header)
+        print *,len(tmp)
+        get_header = tmp(2:len(tmp)-1) 
+
+    end function 
+
+    subroutine set_header(this,string)
         class (Ostream) ::  this
         character(len=*),intent(in)::string
         this%header='['//string//']'
