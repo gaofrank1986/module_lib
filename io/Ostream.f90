@@ -34,7 +34,7 @@ contains
         call constructor%initialize(string,port)
     end function
 
-
+    ! @func : getter
     function get_header(this)
         character(:),allocatable :: get_header,tmp
         class (Ostream) ::  this
@@ -44,7 +44,8 @@ contains
         get_header = tmp(2:len(tmp)-1) 
 
     end function 
-
+    
+    ! @func : setter
     subroutine set_header(this,string)
         class (Ostream) ::  this
         character(len=*),intent(in)::string
@@ -88,7 +89,7 @@ contains
         if(present(ctl)) then
             write(tmp,fmt=ctl) arg
         else
-            write(tmp,fmt='(i4)') arg ! output to string
+            write(tmp,fmt='(i7)') arg ! output to string
         end if
         string=trim(tmp)
     end function
