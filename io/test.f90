@@ -7,7 +7,9 @@ program tes
 
     a=2
     !print *,test%title
-    test=Ostream("test",6)
+    test=Ostream("test",[6,13])
+    call test%fout(test%toString(a,'(i9)'))
+    call test%update_header('new')
     call test%fout(test%toString(a,'(i9)'))
     !call test<<'2'
     !call test%fout(test%toString(a,'(f6.2)'),'2')

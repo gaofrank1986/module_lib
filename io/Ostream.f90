@@ -4,11 +4,12 @@ module io
 
     type Ostream
         private
-        integer port;
+        integer,allocatable :: port(:)
         character(len=:),allocatable :: header
     contains
         procedure,private :: initialize
         procedure ::  fout
+        procedure ::  update_header
         procedure,private:: toString_int
         !procedure,private :: toString_real8
         !procedure,private :: toString_real4
@@ -28,9 +29,22 @@ contains
     function constructor(string,port)
         type(Ostream) ::constructor
         character(len=*),intent(in)::string
-        integer,intent(in) :: port
+        integer,intent(in) :: port(:)
         call constructor%initialize(string,port)
     end function
+
+!    function constructor2(string,port)
+        !type(Ostream) ::constructor2
+        !character(len=*),intent(in)::string
+        !integer,intent(in) :: port(:)
+        !call constructor2%initialize(string,port)
+    !end function
+
+    subroutine update_header(this,string)
+        class (Ostream) ::  this
+        character(len=*),intent(in)::string
+        this%header='['//string//']'
+    end subroutine 
 
     ! @func : used in constructor to intialized object 
     ! @param: [string] header appear at beginning
@@ -38,8 +52,11 @@ contains
     subroutine initialize(this,string,port)
         class (Ostream) ::  this
         character(len=*),intent(in)::string
-        integer,intent(in) :: port
+        integer,intent(in) :: port(:)
+        integer :: tmp
         this%header='['//string//']'
+        tmp = size(port)
+        allocate(this%port(tmp))
         this%port=port
     end subroutine initialize
 
@@ -48,7 +65,10 @@ contains
         class (Ostream),intent(in) ::  this
         character(len=*),intent(in)::string
         !character(len=*),optional::ctl
-        write(this%port,fmt='(a)') this%header//' '//string
+        integer :: i 
+        do i=1,size(this%port) 
+        write(this%port(i),fmt='(a)') this%header//' '//string
+    end do
     end subroutine
    
     ! @func : [toString_int] convert a integer into string 
