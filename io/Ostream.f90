@@ -32,7 +32,6 @@ module io
     ! @ interface : this interface bound constructor with type Ostream to mimic a constructor behavior
     interface Ostream 
         procedure :: constructor
-        procedure :: destructor
     end interface
 
 contains
@@ -46,10 +45,9 @@ contains
         call constructor%initialize(string,port,namelst)
     end function
 
-    function destructor()
-        type(Ostream) ::destructor
-        call destructor%dump()
-    end function
+    subroutine destructor(this)
+        type(Ostream) ::this
+    end subroutine
 
     ! @func : getter
     function get_header(this)
@@ -106,11 +104,7 @@ contains
         this%reg_name=''
     end subroutine initialize
 
-    subroutine dump(this)
-        class (Ostream) ::  this
-
-    end subroutine
-    ! @func : output given string to designated port
+      ! @func : output given string to designated port
     subroutine fout(this,string)
         class (Ostream),intent(in) ::  this
         character(len=*),intent(in)::string
