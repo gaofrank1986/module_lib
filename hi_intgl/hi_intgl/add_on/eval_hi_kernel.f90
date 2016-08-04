@@ -1,14 +1,11 @@
 
     !subroutine eval_singular_elem(passed_mtx,passed_nrml,hiresult,str_result,wak_result)
-    subroutine eval_singular_elem(passed_mtx,hiresult)
-        use matrix_mod
+    subroutine eval_singular_elem(passed_mtx,hiresult,str_result,wak_result)
         implicit none
         integer,parameter :: nf = 8 
         integer,parameter :: ndim = 3
-        !real(8),intent(in) :: passed_mtx(ndim,nf), passed_nrml(ndim,nf)
         real(8),intent(in) :: passed_mtx(ndim,nf)
-        !real(8),intent(out) :: hiresult(nf),str_result(nf),wak_result(nf)
-        real(8),intent(out) :: hiresult(nf)
+        real(8),intent(out) :: hiresult(nf),str_result(nf),wak_result(nf)
         ! nf : num of kernel funcs
 
         real(8) :: src_lcl(ndim-1),pt_intg(ndim-1),seg_start(ndim - 1)  
@@ -32,26 +29,21 @@
         integer :: debug_flag,debug_file_id
 
         cnr_glb_mtx = passed_mtx
-        !cnr_nrml=passed_nrml
+     
 
         allocate(coef_g(0:n_pwr_g),coef_h(0:npw))
         allocate(gpl(iabs(ngl)),gwl(iabs(ngl)))
 
         num_edge = 4!2 * (ndim - 1 ) ! 4 -----how many edges
         hiresult = 0.
-!        str_result = 0
-        !wak_result = 0
+        str_result = 0
+        wak_result = 0
             src_lcl = src_lcl_pre
             src_glb = src_glb_pre
             ri = src_glb - src_ctr_glb 
 
             wfa=dsqrt(hi_beta*2.d0/3.d0+0.4d0)*dlog(dabs(tolgp)/2.d0)  
             fk=3.d0/8.d0*(-10.d0*dble(iabs(ngl))/wfa-1.d0)**(4.d0/3.d0)
-        print *,"src2D"
-        print *,src_lcl
-
-        print *,"src3D"
-        print *,src_glb
 
         if (ndim == 2) then
             print *,"2d case not implemented"
@@ -126,12 +118,12 @@
                                                 & ,src_lcl,pt_intg,coef_g,coef_h)
 
                         call integrate_rho(1,ndim,nf,hi_beta,npw,n_pwr_g,src_lcl,pt_intg,coef_g,coef_h,rint)
-                       ! call integrate_rho(2,ndim,nf,2.d0,npw,n_pwr_g,src_lcl,pt_intg,coef_g,coef_h,rint2)
-                        !call integrate_rho(3,ndim,nf,1.d0,npw,n_pwr_g,src_lcl,pt_intg,coef_g,coef_h,rint3)
+                        call integrate_rho(2,ndim,nf,2.d0,npw,n_pwr_g,src_lcl,pt_intg,coef_g,coef_h,rint2)
+                        call integrate_rho(3,ndim,nf,1.d0,npw,n_pwr_g,src_lcl,pt_intg,coef_g,coef_h,rint3)
 
                         hiresult = hiresult + (dabs(half_step)*gwl(igl)*drdn_p/rho_q)*rint
-                       ! str_result = str_result + (dabs(half_step)*gwl(igl)*drdn_p/rho_q)*rint2
-                        !wak_result = wak_result + (dabs(half_step)*gwl(igl)*drdn_p/rho_q)*rint3
+                        str_result = str_result + (dabs(half_step)*gwl(igl)*drdn_p/rho_q)*rint2
+                        wak_result = wak_result + (dabs(half_step)*gwl(igl)*drdn_p/rho_q)*rint3
                         ! equation (3-6-50)
                     end do ! igl =1,iabs(ngl)
 
@@ -143,8 +135,8 @@
         end if
 
         call swap_result(hiresult)
-       ! call swap_result(str_result)
-        !call swap_result(wak_result)
+        call swap_result(str_result)
+        call swap_result(wak_result)
 
 
     end subroutine

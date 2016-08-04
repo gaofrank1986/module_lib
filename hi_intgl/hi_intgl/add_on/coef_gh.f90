@@ -18,7 +18,6 @@
         &           coefg)
         ! determine coefficients cn using eq. (3-6-37)
 
-
         coefc(0)=dsqrt(coefg(0))
         do n=1,npw
             coefc(n)=0.d0

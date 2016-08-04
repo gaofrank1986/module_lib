@@ -13,7 +13,7 @@ module hi_intg
     !node_matrix(1:3,node_id),normal_matrix(1:3,nrml_id)
     integer,allocatable,private ::  elem_matrix(:,:),src_flag(:)
     !elem_matrix(1:8,elem_id)
-    real(8),allocatable,protected ::  full_mesh_matrix(:,:,:)
+    real(8),allocatable,public ::  full_mesh_matrix(:,:,:)
     !full_mesh_matrix(1:3,1:8,elem_id)
 
     
@@ -114,16 +114,12 @@ contains
         else
             print *,"--Attention! Reading process skipped,model already loaded---"
         end if
-        elem_type = 8 !NCN(IELEM)!! to be changed
-        hi_beta = 3.
-        !num_intgd = 8
         allocate(cnr_glb_mtx(num_dim,elem_type))
         allocate(cnr_nrml(num_dim,elem_type))
         if (elem_type.eq.8) n_pwr_g = 4
-
     end subroutine read_model_from_DAT
 
-!    subroutine init_hi_var()
+    !subroutine init_hi_var()
         !use mesh
          !!USE MVAR_MOD
         !implicit none
