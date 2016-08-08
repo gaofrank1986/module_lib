@@ -1,5 +1,5 @@
-module Matrix_mod
-    integer,parameter :: rk = 8
+module Matrix_wrapper_mod
+    integer,parameter,private :: rk = 8
     type :: Matrix2D
         private
         real(rk),dimension(:,:),allocatable :: m
@@ -7,32 +7,40 @@ module Matrix_mod
     contains
         procedure :: init
         procedure :: pprint
-        procedure :: assign_row_name
+        !procedure :: assign_row_name
     end type
 
 contains
     subroutine init(this,i)
         class(Matrix2D) :: this
         real(rk),dimension(:,:) ::i
+        if (allocated(this%m)) deallocate(this%m)
         allocate(this%m,source=i)
     end subroutine
 
-    subroutine assign_row_name(this,rn)
-        class(Matrix2D) :: this
-        character(len=*),dimension(:) :: rn 
-        integer :: tmp(2)
-        if(not(allocated(this%m))) then
-            print *,"Error,matrix not initialized"
-            stop
-        end if
-        tmp = int(shape(this%m))
-        if(not(tmp(1).eq.size(rn))) then
-            print *,"Error,row_name input size wrong"
-            stop
-        end if
-        allocate(this%row_name(tmp(1)))
-        this%row_name=rn
-    end subroutine
+!    subroutine assign_row_name(this,rn)
+        !class(Matrix2D) :: this
+        !character(len=*),dimension(:) :: rn 
+        !integer :: tmp(2),i
+        !integer,allocatable :: tt(:)
+        !if(not(allocated(this%m))) then
+            !print *,"Error,matrix not initialized"
+            !stop
+        !end if
+        !tmp = int(shape(this%m))
+        !if(not(tmp(1).eq.size(rn))) then
+            !print *,"Error,row_name input size wrong"
+            !stop
+        !end if
+        !allocate(this%row_name(tmp(1)),tt(tmp(1)))
+        !do i=1,tmp(1)
+            !tt(i) = len(rn(i))
+        !end do
+        !if(any(tt>10)) then
+            !print *,"Warning,row_name input size wrong"
+        !end if
+        !this%row_name=rn
+    !end subroutine
 
 !    subroutine assign_col_name(this,cn)
         !class(Matrix2D) :: this
@@ -50,13 +58,19 @@ contains
         !this%col_name=cn
     !end subroutine
 
-    subroutine pprint(this)
+    subroutine pprint(this,title)
         class(Matrix2D) :: this
         integer :: i,j,tmp(2)
+        character(len=*),optional :: title
         character(len=100) :: fm,ts
         tmp = shape(this%m)
 
-        print *,"=========== Printing Matrix ==========="
+        if (present(title)) then
+            print *,"=========== Printing Matrix: "//trim(title)//" ==========="
+        else
+            print *,"=========== Printing Matrix ==========="
+        end if
+
         write(6,*) ' '
 
         do i=1,tmp(1)
