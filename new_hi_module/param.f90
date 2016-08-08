@@ -1,6 +1,16 @@
 module param_mod
     use geo2D_mod
     integer,parameter,private :: rk=8
+
+    interface 
+        function f_bar(ndim,nf,cosn,drdx,drdn,shap)
+            implicit none
+            integer :: ndim,nf
+            real(8),intent(in) :: drdx(ndim),drdn,cosn(ndim),shap(nf)
+            real(8) :: f_bar(nf)       
+        end function
+    end interface
+
     type :: HSCoef
         real(8),allocatable,dimension(:) :: G,H
         real(8),allocatable,dimension(:,:) :: B
@@ -36,6 +46,7 @@ module param_mod
         real(8) :: xp(3),xip(2),xiq(2),beta
         type(HSCoef) :: mat
         real(8),dimension(10) :: gpl,gwl,gpr,gwr
+        procedure(f_bar),pointer,nopass :: f_bar=>null()
     contains 
         procedure :: pprint    
         procedure :: init_mat
