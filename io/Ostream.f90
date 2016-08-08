@@ -16,7 +16,7 @@ module io
         character(len=30),dimension(100) :: reg_name
     contains
         procedure,private :: initialize
-        procedure,private :: dump
+        !procedure,private :: dump
         procedure ::  fout
         procedure ::  set_header
         procedure ::  get_header
