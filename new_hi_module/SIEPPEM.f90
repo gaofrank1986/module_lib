@@ -1,9 +1,10 @@
 module hs_intg
+    use param_mod
     integer,parameter,private :: rk=8
 contains
       subroutine singular_elem(e,p,tolgp,ndsid,nsp,v1e)
-          use matrix_mod
-          use param_mod
+          use matrix_wrapper_mod
+          use gaussm3
           implicit none
           type(HSParams) :: p
           type(HSElem)   :: e
@@ -19,23 +20,28 @@ contains
           integer :: nsp,isid,ks,id,jd,ixi,iswp,isub,igl,ndsid,npw
 
 
-          call p%pprint()
+          v1e=0.0d0
           tol=1.d-5
           ksb=(/-2,1,2,-1/)
           if(nsp.lt.0) then
 
               p%xp = e%map2D(p%xip)
-              sf0 = e%get_SF(p%xip)
+              !sf0 = e%get_SF(p%xip)
           ENDIF
 
-          !IF(NSP.GT.0) p%XP(1:p%NDIM)=e%CK(1:p%NDIM,NSP) 
+          if(nsp.gt.0) then
+              p%xp(1:p%ndim)=e%ck(1:p%ndim,nsp) 
+              p%xip=e%mapped%nodes(nsp)%getArray()
+          end if
+          !call p%pprint()
 
 
 
 
           IF(p%NDIM.EQ.3) then          !   Evaluate 2D SINGULAR INTEGRALS
               !   Evaluate 3D SINGULAR INTEGRALS    
-              CALL GAUSSV(iabs(p%NGL),p%GPL,p%GWL)
+              !CALL GAUSSV(iabs(p%NGL),p%GPL,p%GWL)
+              call gauleg(iabs(p%ngl),p%gpl,p%gwl)
               IF(NSP.GT.0) p%XIP=CDL(2*NSP-1:2*NSP)
               wfa=dsqrt(p%beta*2.d0/3.d0+0.4d0)*dlog(dabs(tolgp)/2.d0)
               fk=3.d0/8.d0*(-10.d0*dble(iabs(p%ngl))/wfa-1.d0)**(4.d0/3.d0)
@@ -94,6 +100,7 @@ contains
       real(8) :: xiq(p%nbdm),slop(p%nbdm),xi(p%nbdm),rint(p%nf)
       integer :: npowf,beta1,k,pw,nbeta
       real(8) :: rhoq
+
       SLOP=XIQ-p%XIP
       RHOQ=DSQRT(DOT_PRODUCT(SLOP,SLOP))
       SLOP=SLOP/RHOQ
@@ -238,6 +245,10 @@ contains
        GM=DSQRT(DOT_PRODUCT(A,A))
        DRDX=A/GM                 ! Eq.(3-6-74)
       ENDIF 
+      ! todo use self-defined normal
+      !==============
+      cosn=matmul(e%nk,shap)
+      !================
       DRDN=DOT_PRODUCT(COSN,DRDX)
       CALL F_BAR(p,DRDX,COSN,R,DRDN,XI,SHAP,X,NF,FQ)
       p%mat%B(IP,:)=FQ*FJCB/ROBAR**p%BETA
@@ -250,53 +261,6 @@ contains
       p%mat%B(1:NPOWF,:)=MATMUL(RMAT,p%mat%B(1:NPOWF,:))    ! Bk IN Eq.(3-6-62)
       END subroutine
 
-      SUBROUTINE GAUSSV(NGAUS,GP,GW)
-      IMPLICIT REAL*8 (A-H,O-Z)
-      DIMENSION GP(NGAUS),GW(NGAUS)
-  !   NGAUS:  The number of Gauss integration points (from 2 to 10)
-  !   GP:     The coordinates of Gauss points
-  !   GW:     The weighting factors of Gauss points
-      SELECT CASE(NGAUS)
-      CASE(2); GP(1)=-0.57735026918962576451D0; GW(1)=1.0000000000000D0
-      CASE(3); GP(1)=-0.77459666924148337704D0; GP(2)=0.0000000000000D0
-       GW(1)=0.555555555555555555556D0; GW(2)=0.888888888888888888889D0
-      CASE(4)
-       GP(1)=-0.86113631159405257522D0; GP(2)=-0.33998104358485626480D0
-       GW(1)=0.34785484513745385737D0;  GW(2)=0.65214515486254614263D0
-      CASE(5)
-       GP(1)=-0.90617984593866399280D0; GP(2)=-0.53846931010568309104D0
-       GP(3)=0.00000000000000000000D0;  GW(1)=0.23692688505618908751D0
-       GW(2)=0.47862867049936646804D0;  GW(3)=0.56888888888888888889D0
-      CASE(6)
-       GP(1)=-0.93246951420315202781D0; GP(2)=-0.66120938646626451366D0
-       GP(3)=-0.23861918608319690863D0; GW(1)=0.17132449237917034504D0
-       GW(2)=0.36076157304813860757D0;  GW(3)=0.46791393457269104739D0
-      CASE(7)
-       GP(1)=-0.94910791234275852453D0; GP(2)=-0.74153118559939443986D0
-       GP(3)=-0.40584515137739716691D0; GP(4)=0.00000000000000000000D0
-       GW(1)=0.12948496616886969327D0;  GW(2)=0.27970539148927666790D0
-       GW(3)=0.38183005050511894495D0;  GW(4)=0.41795918367346938776D0
-      CASE(8)
-       GP(1)=-0.96028985649753623168D0; GP(2)=-0.79666647741362673959D0
-       GP(3)=-0.52553240991632898582D0; GP(4)=-0.18343464249564980494D0
-       GW(1)=0.10122853629037625915D0;  GW(2)=0.22238103445337447054D0
-       GW(3)=0.31370664587788728734D0;  GW(4)=0.36268378337836198297D0
-      CASE(9)
-       GP(1)=-0.96816023950762608984D0; GP(2)=-0.83603110732663579430D0
-       GP(3)=-0.61337143270059039731D0; GP(4)=-0.32425342340380892904D0
-       GP(5)=0.00000000000000000000D0;  GW(1)=0.08127438836157441197D0
-       GW(2)=0.18064816069485740406D0;  GW(3)=0.26061069640293546232D0
-       GW(4)=0.31234707704000284007D0;  GW(5)=0.33023935500125976317D0
-      CASE(10)
-       GP(1)=-0.97390652851717172008D0; GP(2)=-0.86506336668898451073D0
-       GP(3)=-0.67940956829902440623D0; GP(4)=-0.43339539412924719080D0
-       GP(5)=-0.14887433898163121089D0; GW(1)=0.06667134430868813759D0
-       GW(2)=0.14945134915058059315D0;  GW(3)=0.21908636251598204400D0
-       GW(4)=0.26926671930999635509D0;  GW(5)=0.29552422471475287017D0
-      END SELECT
-      KGAUS=NGAUS/2; DO IGASH=1,KGAUS; JGASH=NGAUS+1-IGASH
-      GP(JGASH)=-GP(IGASH); GW(JGASH)=GW(IGASH); ENDDO
-      END 
 
       SUBROUTINE INVSOLVR(NROW,NCOL,A,N,INDIC)
       IMPLICIT REAL*8 (A-H,O-Z)
@@ -330,9 +294,9 @@ contains
       type(HSParams) :: p
       DIMENSION X(p%NDIM),XI(p%NBDM),DRDX(p%NDIM),COSN(p%NDIM),SHAP(*),&
      &          FB(p%NF),XQ(p%NDIM)
-      COMMON/RIM_COEF/PI,DLT(3,3),CNU
+      !COMMON/RIM_COEF/PI,DLT(3,3),CNU
       integer :: i
-      real(8) :: tmp
+      real(8) :: tmp,pi=4*atan(1.0d0)
 
 !     COMPUTING Gij (The first example (2D))
 !      FB(1)=-(1.-2.*DRDX(1)*DRDX(1))/(2.*PI)
@@ -345,6 +309,9 @@ contains
       do i=1,p%nf
       FB(i)=tmp*SHAP(i)    ! GUIG 4.2
         end do
+        ! todo match sign
+        FB=-FB
+        !=========
 
 !        IF(R.GT.1.D-18) FB(1)=R*DLOG(R)
 !        IF(R.LT.1.D-18) FB(1)=0.

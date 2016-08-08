@@ -29,11 +29,8 @@
 !     &                  NDIM-1,NTP,NBE,CD, LNDB,NODE,1,1)
       !--------------------------------------------------------------------
  !    Evaluate boundary integrals 
-      par%ndim = ndim
-      par%nbdm = ndim-1
-      par%node = node
+
       par%beta = beta
-      par%nf = nf
       par%xp = xp
       par%xip = xis(:,1)
       par%nnode = ntp
@@ -53,9 +50,10 @@
       end program
 
        SUBROUTINE RIM_ELEMS(p,CD,LNDB,NSEL,TOLGP,VINT)
+           use sgb
           use hs_intg
           use param_mod
-          use matrix_mod
+          use matrix_wrapper_mod
  IMPLICIT REAL*8 (A-H,O-Z)
       type(HSParams) :: p
       type(HSElem) :: e
@@ -65,32 +63,49 @@
       EXTERNAL INT_ELEM
             DATA NODEF/1,2,5, 2,3,6, 3,4,7, 4,1,8/,NPW/4/
       type(Matrix2D) :: mat
+      real(8):: vint2(8),vint3(8)
+      integer :: is,ielem,nodn
      
-      IF(p%NDIM.EQ.2) p%NPOWG=(p%NODE/3)*2               ! 0,  2
-      IF(p%NDIM.EQ.3) p%NPOWG=p%NODE/2+(p%NODE/9)*2        ! 2,  4,  6 
+      !IF(p%NDIM.EQ.2) p%NPOWG=(p%NODE/3)*2               ! 0,  2
+      !IF(p%NDIM.EQ.3) p%NPOWG=p%NODE/2+(p%NODE/9)*2        ! 2,  4,  6 
       call p%init_mat()
-      NSUB=2*p%NBDM
-      e%nsub = nsub
-      NDSID=2+p%NODE/8
+      !NSUB=2*p%NBDM
+      !e%nsub = nsub
+      !NDSID=2+p%NODE/8
       VINT=0.
-      DO 20 IE=1,p%nelem
-      DO 10 ID=1,p%NODE
-          e%ck(1:3,id) = CD(1:p%NDIM,LNDB(ID,IE))
-10    CK(1:p%NDIM,ID)=CD(1:p%NDIM,LNDB(ID,IE))
+      !DO 20 IE=1,p%nelem
+      do  id=1,p%node
+          e%ck(1:3,id) = cd(1:p%ndim,lndb(id,1))
+          !10    ck(1:p%ndim,id)=cd(1:p%ndim,lndb(id,ie))
+      end do
+
       call e%mapped%get_std()
-      !call mat%init(e%ck)
+      call e%get_nk()
+      call mat%init(e%ck)
+      call mat%pprint("e%ck")
+      call mat%init(e%nk)
+      call mat%pprint("e%nk")
       V1E=0.
-      IF(NSEL(IE).EQ.0) THEN    ! EVALUATE INTEGRAL OVER REGULAR ELEMENT
+      !IF(NSEL(IE).EQ.0) THEN    ! EVALUATE INTEGRAL OVER REGULAR ELEMENT
      !  CALL ADAPTINT_ELEM(NDIM,NBDM,NODE,BETA,CP0,XP,CK,CDL,NF,V1E,     &
      !&                    NGR,NGL,GPR,GWR,GPL,GWL,TOLGP,BETA,INT_ELEM)
-      ELSE     ! EVALUATE INTEGRAL OVER SINGULAR ELEMENT
-       CALL SINGULAR_ELEM(e,p,TOLGP,NDSID,NSEL(IE),V1E)
+      !ELSE     ! EVALUATE INTEGRAL OVER SINGULAR ELEMENT
+       CALL SINGULAR_ELEM(e,p,TOLGP,NDSID,1,V1E)
+       !call sgbd0_1(e,1,vint2,vint3)
+       is=1
+       ielem=1
+       nodn=1
+    call  sgbd0_1(e,1,1,1,[0.d0,-1d0,0d0],vint2,vint3) 
+    !subroutine sgbd0_1(e,is,ielem,nodn,p0,valg,valdg) 
 !       print *,NSEL
 !       print *,XIS
-      ENDIF
+      !ENDIF
       VINT=VINT+V1E
-20    CONTINUE
+!20    CONTINU1
       !call p%pprnnnint()
-      !call mat%pprint()
-      print *,nsel(1)
+      !print '(8f10.5)',swap_b(reshape(vint2,[1,8]))
+!      print '(8f10.5)',swap_b(reshape(vint3,[1,8]))
+      !print *,sum(vint3)
+
+      
       END

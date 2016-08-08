@@ -1,6 +1,6 @@
 module geo2D_mod
     implicit none
-    integer,parameter :: rk=8
+    integer,parameter,private :: rk=8
 
      type :: point2D
         real(rk) :: x,y
@@ -153,14 +153,14 @@ contains
     end function
     ! ============  others related to point2D ==========
     function getX(p) result(res)
-        type(point2D) :: p
+        class(point2D) :: p
         real(rk) :: res
 
         res = p%x
     end function
 
     function getY(p) result(res)
-        type(point2D) :: p
+        class(point2D) :: p
         real(rk) :: res
 
         res = p%y

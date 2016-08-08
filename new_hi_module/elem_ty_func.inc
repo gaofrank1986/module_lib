@@ -1,6 +1,3 @@
-
-      
-      
     ! @var [x] local pos
     ! @var : [xp] for calc distance
     ! @Var : [C] std 2D mtx
@@ -97,4 +94,3 @@
       FJCB=DSQRT(GR(1)*GR(1)+GR(2)*GR(2)+GR(3)*GR(3)) ! 3D JACOBIAN
   70  COSN(1:NDIM)=GR(1:NDIM)/FJCB              ! 2D and 3D Normal
       END
-

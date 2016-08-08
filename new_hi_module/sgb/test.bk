@@ -1,0 +1,16 @@
+program test
+    use util_funcs
+    real(8) :: x(2),pi
+    pi=4*atan(1.0d0)
+
+    print *,dabs(pi)
+    !x = intersect_unit_square(pi*7.1/4)
+    print *,dsign(1.0d0,-1.0d0)
+    !pi = test_func()
+    !print *,pi
+    !print *,x
+    x=[-0.5,0.5]
+    print *,pos_in_sq(x)
+    end program
+
+
