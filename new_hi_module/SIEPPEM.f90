@@ -2,19 +2,11 @@ module hs_intg
     use param_mod
     integer,parameter,private :: rk=8
 
- !     SUBROUTINE F_BAR(p,DRDX,COSN,R,DRDN,XI,SHAP,XQ,NF,FB)
-!    interface 
-        !function f_bar(p,drdx,cosn,r,drdn,xi,shap,xq)
-            !use param_mod
-            !implicit none
-            !type(HSParams) :: p
-            !real(rk),intent(in) :: drdx(p%ndim),drdn,cosn(p%ndim),shap(p%nf)
-            !real(rk) :: f_bar(p%nf)       
-        !end function
+
             
 contains
       subroutine singular_elem(e,p,tolgp,ndsid,nsp,v1e)
-          use matrix_wrapper_mod
+          use matrix_io_mod
           use gaussm3
           implicit none
           type(HSParams) :: p
@@ -49,10 +41,11 @@ contains
 
 
 
-          IF(p%NDIM.EQ.3) then          !   Evaluate 2D SINGULAR INTEGRALS
+          IF(p%NDIM.EQ.3) then          
+              !   Evaluate 2D SINGULAR INTEGRALS
               !   Evaluate 3D SINGULAR INTEGRALS    
-              !CALL GAUSSV(iabs(p%NGL),p%GPL,p%GWL)
               call gauleg(iabs(p%ngl),p%gpl,p%gwl)
+
               IF(NSP.GT.0) p%XIP=CDL(2*NSP-1:2*NSP)
               wfa=dsqrt(p%beta*2.d0/3.d0+0.4d0)*dlog(dabs(tolgp)/2.d0)
               fk=3.d0/8.d0*(-10.d0*dble(iabs(p%ngl))/wfa-1.d0)**(4.d0/3.d0)
@@ -258,10 +251,12 @@ contains
       ENDIF 
       ! todo use self-defined normal
       !==============
-      cosn=matmul(e%nk,shap)
+      if(p%user_nrml) then
+          cosn=matmul(e%nk,shap)
+      end if 
       !================
       DRDN=DOT_PRODUCT(COSN,DRDX)
-      !CALL F_BAR(p,DRDX,COSN,R,DRDN,XI,SHAP,X,NF,FQ)
+      !CALL F_BAR1(p,DRDX,COSN,R,DRDN,XI,SHAP,X,NF,FQ)
       FQ=p%f_bar(p%ndim,p%nf,cosn,drdx,drdn,shap)
 
 
@@ -301,5 +296,7 @@ contains
       DO 80 I=1,N; W(IROW(1:N))=A(I,1:N); DO 80 J=1,N
   80  A(I,J)=W(J)
       END
+
+
 
       end module

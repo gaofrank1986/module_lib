@@ -18,16 +18,18 @@ module param_mod
         procedure :: init=>init_coef
     end type
 
-    type :: HSElem
+    type :: HSElem! QUAD
         integer :: nsub = 4!,nnode,ndim,nbdm
         real(rk) :: ck(3,8)
         real(rk) :: nk(3,8) 
         type(elem2D) :: mapped
+        !type(trinfo),allocatable :: tripole
     contains
         procedure :: map2D
         procedure :: get_SF
         procedure :: get_nrml_at
         procedure :: get_nk
+        !procedure :: divide_tri
         !procedure :: swap
         !procedure,private :: get_mapped_CDL
     end type
@@ -43,6 +45,7 @@ module param_mod
         integer :: npowg=4
         integer :: nnode = 8
         integer :: nelem = 1
+        logical :: user_nrml=.true.
         real(8) :: xp(3),xip(2),xiq(2),beta
         type(HSCoef) :: mat
         real(8),dimension(10) :: gpl,gwl,gpr,gwr
@@ -63,7 +66,39 @@ module param_mod
 
     private :: get_mapped_CDL,SHAPEF,DSHAPE
 contains
-
+!    subroutine div_tris(this,node)
+        !class(HSElem) :: this
+        !select case(node)
+        !case(1)
+            !this%tris(1) = [1,3,2]
+            !this%tris(2) = [1,3,4]
+        !case(2)
+            !this%tris(1) = [2,4,1]
+            !this%tris(2) = [2,4,3]
+        !case(3)
+            !this%tris(1) = [3,1,2]
+            !this%tris(2) = [3,1,4]
+        !case(4)
+            !this%tris(1) = [4,2,1]
+            !this%tris(2) = [4,2,3]
+        !case(5)
+            !this%tris(1) = [5,1,4]
+            !this%tris(2) = [5,4,3]
+            !this%tris(3) = [5,2,3]
+        !case(6)
+            !this%tris(1) = [6,1,2]
+            !this%tris(2) = [6,1,4]
+            !this%tris(3) = [6,4,3]
+        !case(7)
+            !this%tris(1) = [7,4,1]
+            !this%tris(2) = [7,1,2]
+            !this%tris(3) = [7,2,3]
+        !case(8)
+            !this%tris(1) = [8,4,3]
+            !this%tris(2) = [8,1,2]
+            !this%tris(3) = [8,2,3]
+        !end select
+    !end subroutine
 
 
     

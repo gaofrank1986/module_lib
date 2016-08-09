@@ -1,5 +1,5 @@
 !module hi_integrand
-module intgrand_funcs
+module intgrd_funcs
         real(8),private :: pi=4*atan(1.d0)
 contains
 

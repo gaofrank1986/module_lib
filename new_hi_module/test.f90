@@ -1,6 +1,7 @@
       
       PROGRAM SIEPPEM
           use param_mod
+          use intgrd_funcs
       IMPLICIT REAL*8 (A-H,O-Z)
       COMMON/RIM_COEF/PI,DLT(3,3),CNU
       DIMENSION XP(3)
@@ -35,6 +36,8 @@
       par%xip = xis(:,1)
       par%nnode = ntp
       par%nelem = NBE
+      par%user_nrml=.false.
+      par%f_bar=>f1
 
       !CALL RIM_ELEMS(NDIM,NODE,BETA,NBE,CD,LNDB,NSEL,XP,XIS,NGR,NGL,    &
      !&               TOLGP,NF,VINT)
@@ -50,10 +53,10 @@
       end program
 
        SUBROUTINE RIM_ELEMS(p,CD,LNDB,NSEL,TOLGP,VINT)
-           use sgb
+           !use sgb
           use hs_intg
           use param_mod
-          use matrix_wrapper_mod
+          use matrix_io_mod
  IMPLICIT REAL*8 (A-H,O-Z)
       type(HSParams) :: p
       type(HSElem) :: e
@@ -90,12 +93,12 @@
      !  CALL ADAPTINT_ELEM(NDIM,NBDM,NODE,BETA,CP0,XP,CK,CDL,NF,V1E,     &
      !&                    NGR,NGL,GPR,GWR,GPL,GWL,TOLGP,BETA,INT_ELEM)
       !ELSE     ! EVALUATE INTEGRAL OVER SINGULAR ELEMENT
-       CALL SINGULAR_ELEM(e,p,TOLGP,NDSID,1,V1E)
+       CALL SINGULAR_ELEM(e,p,TOLGP,NDSID,-1,V1E)
        !call sgbd0_1(e,1,vint2,vint3)
        is=1
        ielem=1
        nodn=1
-    call  sgbd0_1(e,1,1,1,[0.d0,-1d0,0d0],vint2,vint3) 
+    !call  sgbd0_1(e,1,1,1,[0.d0,-1d0,0d0],vint2,vint3) 
     !subroutine sgbd0_1(e,is,ielem,nodn,p0,valg,valdg) 
 !       print *,NSEL
 !       print *,XIS
