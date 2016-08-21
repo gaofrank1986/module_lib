@@ -185,5 +185,49 @@ contains
         end if
         string=trim(tmp)
     end function
+
+
+    function getfilename(prefix,id,ext) result(ans)
+        integer :: id
+        character(*) :: prefix
+        character(len=*),optional :: ext
+        character(len=1024) :: tmp,e
+        character(:),allocatable :: ans
+
+        if (present(ext)) then
+            e=ext
+        else
+            e='.out'
+        end if
+        write(tmp,fmt='(i0.7)') id
+        ans=prefix//'.'//trim(tmp)//trim(e)
+    end function
+
+    function create_folder() result(ans)
+        character*8 ::date
+        character*10 ::time
+        character*5 :: zone
+        integer*4 :: values(8)
+        character(:),allocatable ::ans
+        integer :: flag
+        call date_and_time(date,time,zone,values)
+        ans =  time(1:4)//'_'//date
+        call execute_command_line("mkdir "//ans,wait=.true.,cmdstat=flag)
+        call execute_command_line("cp -a ./INPUT ./"//ans)
+        print *,"Folder named "//ans//" is created,input files backed up"
+        ans="./"//ans//"/"
+    end function
+
+    function timestamp() result(ans)
+        character*8 ::date
+        character*10 ::time
+        character*5 :: zone
+        integer*4 :: values(8)
+        character(:),allocatable ::ans
+        integer :: flag
+        call date_and_time(date,time,zone,values)
+        ans =  time(1:4)//'_'//date
+        ans =  "[Date "//date//' Time '//time(1:2)//':'//time(3:4)//':'//time(5:6)//'] '
+    end function
 end module io
 
