@@ -1,1 +1,0 @@
-../gaussian/Gaussm3.f90

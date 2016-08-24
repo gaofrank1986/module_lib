@@ -2,8 +2,6 @@ module hs_intg
     use param_mod
     integer,parameter,private :: rk=8
 
-
-            
 contains
       subroutine singular_elem(e,p,tolgp,ndsid,nsp,v1e)
           use matrix_io_mod

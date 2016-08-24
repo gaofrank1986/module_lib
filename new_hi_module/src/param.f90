@@ -1,6 +1,41 @@
+!!!
+!! module was designed mainly to hold HSElem class and [HSParams] class
+!!
+!!!
 module param_mod
     use geo2D_mod
     integer,parameter,private :: rk=8
+
+    !!!
+    !! @class : [HSElem] hypersingular elemment
+    !!
+    !! Usage:------------
+    !!   type(HSElem) :: elem
+    !!   call elem%mapped%get_std()
+    !! -------------------  
+    !! combined the 2D elem info together with 3D elem
+    !!!
+    type :: HSElem! QUAD
+        integer :: nsub = 4!,nnode,ndim,nbdm
+        real(rk) :: ck(3,8)
+        real(rk) :: nk(3,8) 
+        type(elem2D) :: mapped
+    contains
+        procedure :: map2D
+        procedure :: get_SF
+        procedure :: get_nrml_at
+        procedure :: get_nk
+    end type
+
+    !!!
+    !! @class [HSCoef] to hold G,H,B matrix in calculation
+    !!!
+    type :: HSCoef
+        real(8),allocatable,dimension(:) :: G,H
+        real(8),allocatable,dimension(:,:) :: B
+    contains
+        procedure :: init=>init_coef
+    end type
 
     interface 
         function f_bar(ndim,nf,cosn,drdx,drdn,shap)
@@ -10,29 +45,6 @@ module param_mod
             real(8) :: f_bar(nf)       
         end function
     end interface
-
-    type :: HSCoef
-        real(8),allocatable,dimension(:) :: G,H
-        real(8),allocatable,dimension(:,:) :: B
-    contains
-        procedure :: init=>init_coef
-    end type
-
-    type :: HSElem! QUAD
-        integer :: nsub = 4!,nnode,ndim,nbdm
-        real(rk) :: ck(3,8)
-        real(rk) :: nk(3,8) 
-        type(elem2D) :: mapped
-        !type(trinfo),allocatable :: tripole
-    contains
-        procedure :: map2D
-        procedure :: get_SF
-        procedure :: get_nrml_at
-        procedure :: get_nk
-        !procedure :: divide_tri
-        !procedure :: swap
-        !procedure,private :: get_mapped_CDL
-    end type
 
     type :: HSParams
         integer :: ndim=3
@@ -50,11 +62,15 @@ module param_mod
         type(HSCoef) :: mat
         real(8),dimension(10) :: gpl,gwl,gpr,gwr
         procedure(f_bar),pointer,nopass :: f_bar=>null()
+
     contains 
         procedure :: pprint    
         procedure :: init_mat
     end type
 
+    !!!
+    !! generic interface for swap function dealing with 1 dim or 2 dim matrix
+    !!!
     interface swap_g2t
         module procedure :: swap_g2t_rank1
         module procedure :: swap_g2t_rank2
@@ -66,43 +82,6 @@ module param_mod
 
     private :: get_mapped_CDL,SHAPEF,DSHAPE
 contains
-!    subroutine div_tris(this,node)
-        !class(HSElem) :: this
-        !select case(node)
-        !case(1)
-            !this%tris(1) = [1,3,2]
-            !this%tris(2) = [1,3,4]
-        !case(2)
-            !this%tris(1) = [2,4,1]
-            !this%tris(2) = [2,4,3]
-        !case(3)
-            !this%tris(1) = [3,1,2]
-            !this%tris(2) = [3,1,4]
-        !case(4)
-            !this%tris(1) = [4,2,1]
-            !this%tris(2) = [4,2,3]
-        !case(5)
-            !this%tris(1) = [5,1,4]
-            !this%tris(2) = [5,4,3]
-            !this%tris(3) = [5,2,3]
-        !case(6)
-            !this%tris(1) = [6,1,2]
-            !this%tris(2) = [6,1,4]
-            !this%tris(3) = [6,4,3]
-        !case(7)
-            !this%tris(1) = [7,4,1]
-            !this%tris(2) = [7,1,2]
-            !this%tris(3) = [7,2,3]
-        !case(8)
-            !this%tris(1) = [8,4,3]
-            !this%tris(2) = [8,1,2]
-            !this%tris(3) = [8,2,3]
-        !end select
-    !end subroutine
-
-
-    
-
 
     function get_mapped_CDL() result(ans)
         implicit none
@@ -123,7 +102,10 @@ contains
         this%H=0.0d0
     end subroutine
 
-    ! @func : allocate coeff
+
+    !!! ============hsparams binding procedure================
+
+    ! @func : initialize matrix for allocate coeff
     subroutine init_mat(this)
         class(HSParams) ::this
         call this%mat%init(this%npw,this%npowg,this%nf)
@@ -140,7 +122,13 @@ contains
         print *,"beta",this%beta
     end subroutine
 
+    !!===================================================
 
+    !!! ============hselem binding procedure================
+    !!!
+    !! @func : map2D
+    !! @memo : get a mapped 2D poistion for [x]
+    !!!
     function map2D(this,x) result(ans)
         implicit none
         class(HSElem) ::this
@@ -151,6 +139,9 @@ contains
     end function
 
 
+    !!!
+    !! @func : get shape function at [x]
+    !!!
     function get_SF(this,x) result(res)
         implicit none
         class(HSElem) ::this
@@ -171,10 +162,12 @@ contains
     !!SUBROUTINE DSHAPE(NDIM,NBDM,NODE,X,CK,COSN,FJCB,C,GD)
     !end function
 
-    ! @func: get nrml at give 2D position[x]
-    ! @var :[cosn]  normalized nrml vector
-    ! @var :[fjcb]  jacobian determinant
-    ! @var :[gd] two tangent vector
+    !!!
+    !! @func: get nrml at give 2D position[x]
+    !! @var :[cosn]  normalized nrml vector at[x]
+    !! @var :[fjcb]  jacobian determinant
+    !! @var :[gd] two deriative vector/tagent vector at[x]
+    !!!
     subroutine get_nrml_at(this,x,cosn,fjcb,gd)
         implicit none
         class(HSElem) ::this
@@ -183,6 +176,9 @@ contains
         call dshape(3,2,8,x,this%ck,cosn,FJCB,get_mapped_CDL(),GD)
     end subroutine
 
+    !!!
+    !! @func: get normal matrix used given element node info
+    !!!
     subroutine get_nk(this)
         class(HSElem) :: this
         real(rk) :: tmp1(3,2),tmp,x(2)
@@ -196,11 +192,14 @@ contains
 
         do i=1,8
             x=this%mapped%nodes(i)%getArray()
-            
             call this%get_nrml_at(x,this%nk(:,i),tmp,tmp1)
         end do
     end subroutine
-    include './elem_ty_func.inc'
+
+
+
+    !!!=====================================================
+    include './shapefunc.inc'
 
     !@ func : swap g2t
     function swap_g2t_rank1(input) result(ans)
@@ -331,6 +330,7 @@ contains
         ans(:,8) = input(:,8)
     end function
 
+    ! gao format to teng format
     function indx(inp) result(ans)
         implicit none
         integer,intent(in) :: inp
@@ -355,7 +355,39 @@ contains
             ans=8
         end select
     end function
-
+!    subroutine div_tris(this,node)
+        !class(HSElem) :: this
+        !select case(node)
+        !case(1)
+            !this%tris(1) = [1,3,2]
+            !this%tris(2) = [1,3,4]
+        !case(2)
+            !this%tris(1) = [2,4,1]
+            !this%tris(2) = [2,4,3]
+        !case(3)
+            !this%tris(1) = [3,1,2]
+            !this%tris(2) = [3,1,4]
+        !case(4)
+            !this%tris(1) = [4,2,1]
+            !this%tris(2) = [4,2,3]
+        !case(5)
+            !this%tris(1) = [5,1,4]
+            !this%tris(2) = [5,4,3]
+            !this%tris(3) = [5,2,3]
+        !case(6)
+            !this%tris(1) = [6,1,2]
+            !this%tris(2) = [6,1,4]
+            !this%tris(3) = [6,4,3]
+        !case(7)
+            !this%tris(1) = [7,4,1]
+            !this%tris(2) = [7,1,2]
+            !this%tris(3) = [7,2,3]
+        !case(8)
+            !this%tris(1) = [8,4,3]
+            !this%tris(2) = [8,1,2]
+            !this%tris(3) = [8,2,3]
+        !end select
+    !end subroutine
 end module
 
 

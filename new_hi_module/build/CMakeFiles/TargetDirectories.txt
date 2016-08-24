@@ -1,0 +1,6 @@
+/Users/home/project/module_lib/new_hi_module/build/CMakeFiles/edit_cache.dir
+/Users/home/project/module_lib/new_hi_module/build/CMakeFiles/rebuild_cache.dir
+/Users/home/project/module_lib/new_hi_module/build/CMakeFiles/test.dir
+/Users/home/project/module_lib/new_hi_module/build/src/CMakeFiles/edit_cache.dir
+/Users/home/project/module_lib/new_hi_module/build/src/CMakeFiles/rebuild_cache.dir
+/Users/home/project/module_lib/new_hi_module/build/src/CMakeFiles/hi2_mod.dir

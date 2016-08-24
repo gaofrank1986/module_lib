@@ -1,0 +1,174 @@
+The system is: Darwin - 15.5.0 - x86_64
+Compiling the Fortran compiler identification source file "CMakeFortranCompilerId.F" succeeded.
+Compiler: /usr/local/bin/ifort 
+Build flags: 
+Id flags: -v
+
+The output was:
+0
+ifort version 16.0.2
+/usr/local/bin/ifort-16.0-base/bin/intel64/fpp    -D__INTEL_COMPILER=1600 -D__INTEL_COMPILER_UPDATE=2 -D__x86_64 -D__x86_64__ -D__amd64 -D__amd64__ -D__INTEL_COMPILER_BUILD_DATE=20160204 -D__PIC__ -D__APPLE__ -D__MACH__ -D__pentium4 -D__pentium4__ -D__tune_pentium4__ -D__SSE2__ -D__SSE2_MATH__ -D__SSE3__ -D__SSSE3__ -D__SSE__ -D__SSE_MATH__ -D__MMX__ -I. -I/usr/local/bin/ifort-16.0-base/compiler/include/intel64 -I/usr/local/bin/ifort-16.0-base/compiler/include -I/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/../lib/clang/7.0.2/include -I/usr/local/include -I/usr/include/ -I/usr/include -fixed -4Ycpp -4Ncvf -f_com=yes -MX CMakeFortranCompilerId.F /var/folders/z_/4q_1dfkj13vgd3gw2rjt7_th0000gn/T/ifortol5mjE.i
+#include "..." search starts here:
+#include <...> search starts here:
+ .
+ /usr/local/bin/ifort-16.0-base/compiler/include/intel64
+ /usr/local/bin/ifort-16.0-base/compiler/include
+ /Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/../lib/clang/7.0.2/include
+ /usr/local/include
+ /usr/include/
+ /usr/include
+End of search list.
+/usr/local/bin/ifort-16.0-base/bin/intel64/fortcom    -D__INTEL_COMPILER=1600 -D__INTEL_COMPILER_UPDATE=2 -D__x86_64 -D__x86_64__ -D__amd64 -D__amd64__ -D__INTEL_COMPILER_BUILD_DATE=20160204 -D__PIC__ -D__APPLE__ -D__MACH__ -D__pentium4 -D__pentium4__ -D__tune_pentium4__ -D__SSE2__ -D__SSE2_MATH__ -D__SSE3__ -D__SSSE3__ -D__SSE__ -D__SSE_MATH__ -D__MMX__ -mGLOB_pack_sort_init_list -I. -I/usr/local/bin/ifort-16.0-base/compiler/include/intel64 -I/usr/local/bin/ifort-16.0-base/compiler/include -I/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/../lib/clang/7.0.2/include -I/usr/local/include -I/usr/include/ -I/usr/include -O2 -simd -mGLOB_em64t=TRUE -mP1OPT_version=16.0-intel64 -mGLOB_diag_file=/var/folders/z_/4q_1dfkj13vgd3gw2rjt7_th0000gn/T/ifortDjSvYq.diag -mGLOB_diag_use_message_catalog=FALSE -mGLOB_source_language=GLOB_SOURCE_LANGUAGE_F90 -mP2OPT_static_promotion -mP1OPT_print_version=FALSE -mCG_use_gas_got_workaround=F -mP2OPT_align_option_used=TRUE -mGLOB_gcc_version=490 -mGLOB_options_string=-v -mGLOB_position_independent_code -mGLOB_preemption_model=1 -mGLOB_no_compact_unwind=TRUE -mGLOB_cxx_limited_range=FALSE -mCG_extend_parms=FALSE -mGLOB_compiler_bin_directory=/usr/local/bin/ifort-16.0-base/bin/intel64 -mGLOB_as_output_backup_file_name=/var/folders/z_/4q_1dfkj13vgd3gw2rjt7_th0000gn/T/ifortPtS841as_.s -mGLOB_dashboard_use_source_name -mIPOPT_activate -mIPOPT_lite -mGLOB_instruction_tuning=0x0 -mGLOB_product_id_code=0x22006d8f -mCG_bnl_movbe=T -mGLOB_extended_instructions=0x80 -mP3OPT_use_mspp_call_convention -mP2OPT_subs_out_of_bound=FALSE -mP2OPT_disam_type_based_disam=2 -mGLOB_ansi_alias -mPGOPTI_value_profile_use=T -mGLOB_opt_report_use_source_name -mP2OPT_il0_array_sections=TRUE -mP2OPT_hlo_level=2 -mP2OPT_hlo -mP2OPT_hpo_rtt_control=0 -mIPOPT_args_in_regs=0 -mP2OPT_disam_assume_nonstd_intent_in=FALSE -mGLOB_imf_mapping_library=/usr/local/bin/ifort-16.0-base/bin/intel64/libiml_attr.dylib -mIPOPT_single_file_compile_and_link=TRUE -mPGOPTI_gen_threadsafe_level=0 -mIPOPT_obj_output_file_name=/var/folders/z_/4q_1dfkj13vgd3gw2rjt7_th0000gn/T/ifortDjSvYq.o -mIPOPT_whole_archive_fixup_file_name=/var/folders/z_/4q_1dfkj13vgd3gw2rjt7_th0000gn/T/ifortwarchJVcqTE -mGLOB_long_size_64 -mGLOB_routine_pointer_size_64 -mGLOB_driver_tempfile_name=/var/folders/z_/4q_1dfkj13vgd3gw2rjt7_th0000gn/T/iforttempfileOOx4NC -mGLOB_os_target=GLOB_OS_TARGET_MACH -mGLOB_async_unwind_tables=TRUE -mGLOB_obj_output_file=/var/folders/z_/4q_1dfkj13vgd3gw2rjt7_th0000gn/T/ifortDjSvYq.o -mGLOB_source_dialect=GLOB_SOURCE_DIALECT_FORTRAN -mP1OPT_source_file_name=CMakeFortranCompilerId.F -mP2OPT_symtab_type_copy=true /var/folders/z_/4q_1dfkj13vgd3gw2rjt7_th0000gn/T/ifortol5mjE.i
+#include "..." search starts here:
+#include <...> search starts here:
+ .
+ /usr/local/bin/ifort-16.0-base/compiler/include/intel64
+ /usr/local/bin/ifort-16.0-base/compiler/include
+ /Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/../lib/clang/7.0.2/include
+ /usr/local/include
+ /usr/include/
+ /usr/include
+End of search list.
+/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/ld    -dynamic -arch x86_64 -weak_reference_mismatches non-weak -macosx_version_min 10.11.5 -no_compact_unwind -o a.out /usr/local/bin/ifort-16.0-base/compiler/lib/for_main.o -L/usr/local/bin/ifort-16.0-base/compiler/lib -L/usr/lib /var/folders/z_/4q_1dfkj13vgd3gw2rjt7_th0000gn/T/ifortDjSvYq.o /usr/local/bin/ifort-16.0-base/compiler/lib/libifport.a /usr/local/bin/ifort-16.0-base/compiler/lib/libifcore.a /usr/local/bin/ifort-16.0-base/compiler/lib/libimf.a /usr/local/bin/ifort-16.0-base/compiler/lib/libsvml.a /usr/local/bin/ifort-16.0-base/compiler/lib/libipgo.a -lSystem /usr/local/bin/ifort-16.0-base/compiler/lib/libirc.a -lpthread /usr/local/bin/ifort-16.0-base/compiler/lib/libsvml.a /Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/../lib/clang/7.0.2/lib/darwin/libclang_rt.osx.a
+
+
+Compilation of the Fortran compiler identification source "CMakeFortranCompilerId.F" produced "a.out"
+
+The Fortran compiler identification is Intel, found in "/Users/home/project/module_lib/new_hi_module/build/CMakeFiles/3.6.0/CompilerIdFortran/a.out"
+
+Determining if the Fortran compiler works passed with the following output:
+Change Dir: /Users/home/project/module_lib/new_hi_module/build/CMakeFiles/CMakeTmp
+
+Run Build Command:"/usr/bin/make" "cmTC_1fb68/fast"
+/Applications/Xcode.app/Contents/Developer/usr/bin/make -f CMakeFiles/cmTC_1fb68.dir/build.make CMakeFiles/cmTC_1fb68.dir/build
+Building Fortran object CMakeFiles/cmTC_1fb68.dir/testFortranCompiler.f.o
+/usr/local/bin/ifort     -c /Users/home/project/module_lib/new_hi_module/build/CMakeFiles/CMakeTmp/testFortranCompiler.f -o CMakeFiles/cmTC_1fb68.dir/testFortranCompiler.f.o
+Linking Fortran executable cmTC_1fb68
+/usr/local/Cellar/cmake/3.6.0_1/bin/cmake -E cmake_link_script CMakeFiles/cmTC_1fb68.dir/link.txt --verbose=1
+/usr/local/bin/ifort       CMakeFiles/cmTC_1fb68.dir/testFortranCompiler.f.o  -o cmTC_1fb68  
+
+
+Detecting Fortran compiler ABI info compiled with the following output:
+Change Dir: /Users/home/project/module_lib/new_hi_module/build/CMakeFiles/CMakeTmp
+
+Run Build Command:"/usr/bin/make" "cmTC_eee85/fast"
+/Applications/Xcode.app/Contents/Developer/usr/bin/make -f CMakeFiles/cmTC_eee85.dir/build.make CMakeFiles/cmTC_eee85.dir/build
+Building Fortran object CMakeFiles/cmTC_eee85.dir/CMakeFortranCompilerABI.F.o
+/usr/local/bin/ifort     -c /usr/local/Cellar/cmake/3.6.0_1/share/cmake/Modules/CMakeFortranCompilerABI.F -o CMakeFiles/cmTC_eee85.dir/CMakeFortranCompilerABI.F.o
+Linking Fortran executable cmTC_eee85
+/usr/local/Cellar/cmake/3.6.0_1/bin/cmake -E cmake_link_script CMakeFiles/cmTC_eee85.dir/link.txt --verbose=1
+/usr/local/bin/ifort    -v -Wl,-v   CMakeFiles/cmTC_eee85.dir/CMakeFortranCompilerABI.F.o  -o cmTC_eee85   
+ifort version 16.0.2
+/usr/local/bin/ifort-16.0-base/bin/intel64/fortcom    -mGLOB_em64t=TRUE -mP1OPT_version=16.0-intel64 -mGLOB_diag_file=CMakeFiles/cmTC_eee85.dir/CMakeFortranCompilerABI.F.diag -mGLOB_diag_use_message_catalog=FALSE -mGLOB_source_language=GLOB_SOURCE_LANGUAGE_F90 -mP2OPT_static_promotion -mP1OPT_print_version=FALSE -mCG_use_gas_got_workaround=F -mP2OPT_align_option_used=TRUE -mGLOB_gcc_version=490 "-mGLOB_options_string=-v -Wl,-v -o cmTC_eee85" -mGLOB_position_independent_code -mGLOB_preemption_model=1 -mGLOB_no_compact_unwind=TRUE -mGLOB_cxx_limited_range=FALSE -mCG_extend_parms=FALSE -mGLOB_compiler_bin_directory=/usr/local/bin/ifort-16.0-base/bin/intel64 -mGLOB_as_output_backup_file_name=/var/folders/z_/4q_1dfkj13vgd3gw2rjt7_th0000gn/T/iforth5vpOtas_.s -mGLOB_dashboard_use_source_name -mIPOPT_activate -mGLOB_product_id_code=0x22006d8f -mP3OPT_use_mspp_call_convention -mP2OPT_subs_out_of_bound=FALSE -mP2OPT_disam_type_based_disam=2 -mGLOB_ansi_alias -mPGOPTI_value_profile_use=T -mGLOB_opt_report_use_source_name -mP2OPT_il0_array_sections=TRUE -mP2OPT_hlo -mP2OPT_hpo_rtt_control=0 -mIPOPT_args_in_regs=0 -mP2OPT_disam_assume_nonstd_intent_in=FALSE -mGLOB_imf_mapping_library=/usr/local/bin/ifort-16.0-base/bin/intel64/libiml_attr.dylib -mPGOPTI_gen_threadsafe_level=0 -mIPOPT_link -mIPOPT_ipo_activate -mIPOPT_mo_activate -mIPOPT_source_files_list=/var/folders/z_/4q_1dfkj13vgd3gw2rjt7_th0000gn/T/ifortslisYnfCjZ -mIPOPT_mo_global_data "-mIPOPT_cmdline_link="-dynamic" "-arch" "x86_64" "-weak_reference_mismatches" "non-weak" "-macosx_version_min" "10.11.5" "-no_compact_unwind" "-o" "cmTC_eee85" "/usr/local/bin/ifort-16.0-base/compiler/lib/for_main.o" "-L/usr/local/bin/ifort-16.0-base/compiler/lib" "-L/usr/lib" "-v" "CMakeFiles/cmTC_eee85.dir/CMakeFortranCompilerABI.F.o" "/usr/local/bin/ifort-16.0-base/compiler/lib/libifport.a" "/usr/local/bin/ifort-16.0-base/compiler/lib/libifcore.a" "/usr/local/bin/ifort-16.0-base/compiler/lib/libimf.a" "/usr/local/bin/ifort-16.0-base/compiler/lib/libsvml.a" "/usr/local/bin/ifort-16.0-base/compiler/lib/libipgo.a" "-lSystem" "/usr/local/bin/ifort-16.0-base/compiler/lib/libirc.a" "-lpthread" "/usr/local/bin/ifort-16.0-base/compiler/lib/libsvml.a" "/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/../lib/clang/7.0.2/lib/darwin/libclang_rt.osx.a"" -mIPOPT_il_in_obj -mIPOPT_ipo_activate_warn=FALSE -mIPOPT_obj_output_file_name=/var/folders/z_/4q_1dfkj13vgd3gw2rjt7_th0000gn/T/ipo_ifortr0ts3T.o -mIPOPT_whole_archive_fixup_file_name=/var/folders/z_/4q_1dfkj13vgd3gw2rjt7_th0000gn/T/ifortwarchBFnJ6i -mGLOB_long_size_64 -mGLOB_routine_pointer_size_64 -mGLOB_driver_tempfile_name=/var/folders/z_/4q_1dfkj13vgd3gw2rjt7_th0000gn/T/iforttempfileJNkr86 -mGLOB_os_target=GLOB_OS_TARGET_MACH -mGLOB_async_unwind_tables=TRUE -mGLOB_obj_output_file=/var/folders/z_/4q_1dfkj13vgd3gw2rjt7_th0000gn/T/ipo_ifortr0ts3T.o -mGLOB_source_dialect=GLOB_SOURCE_DIALECT_NONE -mP1OPT_source_file_name=ipo_out.f -mP2OPT_symtab_type_copy=true CMakeFiles/cmTC_eee85.dir/CMakeFortranCompilerABI.F.o -mIPOPT_object_files=T -mIPOPT_assembly_files=/var/folders/z_/4q_1dfkj13vgd3gw2rjt7_th0000gn/T/ifortalisrVsfv3 -mIPOPT_generated_tempfiles=/var/folders/z_/4q_1dfkj13vgd3gw2rjt7_th0000gn/T/ifortelisr6xucZ -mIPOPT_embedded_object_base_name=/var/folders/z_/4q_1dfkj13vgd3gw2rjt7_th0000gn/T/iforteobjaekan9
+/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/ld    -dynamic -arch x86_64 -weak_reference_mismatches non-weak -macosx_version_min 10.11.5 -no_compact_unwind -o cmTC_eee85 /usr/local/bin/ifort-16.0-base/compiler/lib/for_main.o -L/usr/local/bin/ifort-16.0-base/compiler/lib -L/usr/lib CMakeFiles/cmTC_eee85.dir/CMakeFortranCompilerABI.F.o -v /usr/local/bin/ifort-16.0-base/compiler/lib/libifport.a /usr/local/bin/ifort-16.0-base/compiler/lib/libifcore.a /usr/local/bin/ifort-16.0-base/compiler/lib/libimf.a /usr/local/bin/ifort-16.0-base/compiler/lib/libsvml.a /usr/local/bin/ifort-16.0-base/compiler/lib/libipgo.a -lSystem /usr/local/bin/ifort-16.0-base/compiler/lib/libirc.a -lpthread /usr/local/bin/ifort-16.0-base/compiler/lib/libsvml.a /Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/../lib/clang/7.0.2/lib/darwin/libclang_rt.osx.a
+@(#)PROGRAM:ld  PROJECT:ld64-253.9
+configured to support archs: armv6 armv7 armv7s arm64 i386 x86_64 x86_64h armv6m armv7k armv7m armv7em (tvOS)
+Library search paths:
+	/usr/local/bin/ifort-16.0-base/compiler/lib
+	/usr/lib
+	/usr/lib
+	/usr/local/lib
+Framework search paths:
+	/Library/Frameworks/
+	/System/Library/Frameworks/
+
+
+Parsed Fortran implicit link information from above output:
+  link line regex: [^( *|.*[/\])(ld|([^/\]+-)?ld|collect2)[^/\]*( |$)]
+  ignore line: [Change Dir: /Users/home/project/module_lib/new_hi_module/build/CMakeFiles/CMakeTmp]
+  ignore line: []
+  ignore line: [Run Build Command:"/usr/bin/make" "cmTC_eee85/fast"]
+  ignore line: [/Applications/Xcode.app/Contents/Developer/usr/bin/make -f CMakeFiles/cmTC_eee85.dir/build.make CMakeFiles/cmTC_eee85.dir/build]
+  ignore line: [Building Fortran object CMakeFiles/cmTC_eee85.dir/CMakeFortranCompilerABI.F.o]
+  ignore line: [/usr/local/bin/ifort     -c /usr/local/Cellar/cmake/3.6.0_1/share/cmake/Modules/CMakeFortranCompilerABI.F -o CMakeFiles/cmTC_eee85.dir/CMakeFortranCompilerABI.F.o]
+  ignore line: [Linking Fortran executable cmTC_eee85]
+  ignore line: [/usr/local/Cellar/cmake/3.6.0_1/bin/cmake -E cmake_link_script CMakeFiles/cmTC_eee85.dir/link.txt --verbose=1]
+  ignore line: [/usr/local/bin/ifort    -v -Wl,-v   CMakeFiles/cmTC_eee85.dir/CMakeFortranCompilerABI.F.o  -o cmTC_eee85   ]
+  ignore line: [ifort version 16.0.2]
+  ignore line: [/usr/local/bin/ifort-16.0-base/bin/intel64/fortcom    -mGLOB_em64t=TRUE -mP1OPT_version=16.0-intel64 -mGLOB_diag_file=CMakeFiles/cmTC_eee85.dir/CMakeFortranCompilerABI.F.diag -mGLOB_diag_use_message_catalog=FALSE -mGLOB_source_language=GLOB_SOURCE_LANGUAGE_F90 -mP2OPT_static_promotion -mP1OPT_print_version=FALSE -mCG_use_gas_got_workaround=F -mP2OPT_align_option_used=TRUE -mGLOB_gcc_version=490 "-mGLOB_options_string=-v -Wl,-v -o cmTC_eee85" -mGLOB_position_independent_code -mGLOB_preemption_model=1 -mGLOB_no_compact_unwind=TRUE -mGLOB_cxx_limited_range=FALSE -mCG_extend_parms=FALSE -mGLOB_compiler_bin_directory=/usr/local/bin/ifort-16.0-base/bin/intel64 -mGLOB_as_output_backup_file_name=/var/folders/z_/4q_1dfkj13vgd3gw2rjt7_th0000gn/T/iforth5vpOtas_.s -mGLOB_dashboard_use_source_name -mIPOPT_activate -mGLOB_product_id_code=0x22006d8f -mP3OPT_use_mspp_call_convention -mP2OPT_subs_out_of_bound=FALSE -mP2OPT_disam_type_based_disam=2 -mGLOB_ansi_alias -mPGOPTI_value_profile_use=T -mGLOB_opt_report_use_source_name -mP2OPT_il0_array_sections=TRUE -mP2OPT_hlo -mP2OPT_hpo_rtt_control=0 -mIPOPT_args_in_regs=0 -mP2OPT_disam_assume_nonstd_intent_in=FALSE -mGLOB_imf_mapping_library=/usr/local/bin/ifort-16.0-base/bin/intel64/libiml_attr.dylib -mPGOPTI_gen_threadsafe_level=0 -mIPOPT_link -mIPOPT_ipo_activate -mIPOPT_mo_activate -mIPOPT_source_files_list=/var/folders/z_/4q_1dfkj13vgd3gw2rjt7_th0000gn/T/ifortslisYnfCjZ -mIPOPT_mo_global_data "-mIPOPT_cmdline_link="-dynamic" "-arch" "x86_64" "-weak_reference_mismatches" "non-weak" "-macosx_version_min" "10.11.5" "-no_compact_unwind" "-o" "cmTC_eee85" "/usr/local/bin/ifort-16.0-base/compiler/lib/for_main.o" "-L/usr/local/bin/ifort-16.0-base/compiler/lib" "-L/usr/lib" "-v" "CMakeFiles/cmTC_eee85.dir/CMakeFortranCompilerABI.F.o" "/usr/local/bin/ifort-16.0-base/compiler/lib/libifport.a" "/usr/local/bin/ifort-16.0-base/compiler/lib/libifcore.a" "/usr/local/bin/ifort-16.0-base/compiler/lib/libimf.a" "/usr/local/bin/ifort-16.0-base/compiler/lib/libsvml.a" "/usr/local/bin/ifort-16.0-base/compiler/lib/libipgo.a" "-lSystem" "/usr/local/bin/ifort-16.0-base/compiler/lib/libirc.a" "-lpthread" "/usr/local/bin/ifort-16.0-base/compiler/lib/libsvml.a" "/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/../lib/clang/7.0.2/lib/darwin/libclang_rt.osx.a"" -mIPOPT_il_in_obj -mIPOPT_ipo_activate_warn=FALSE -mIPOPT_obj_output_file_name=/var/folders/z_/4q_1dfkj13vgd3gw2rjt7_th0000gn/T/ipo_ifortr0ts3T.o -mIPOPT_whole_archive_fixup_file_name=/var/folders/z_/4q_1dfkj13vgd3gw2rjt7_th0000gn/T/ifortwarchBFnJ6i -mGLOB_long_size_64 -mGLOB_routine_pointer_size_64 -mGLOB_driver_tempfile_name=/var/folders/z_/4q_1dfkj13vgd3gw2rjt7_th0000gn/T/iforttempfileJNkr86 -mGLOB_os_target=GLOB_OS_TARGET_MACH -mGLOB_async_unwind_tables=TRUE -mGLOB_obj_output_file=/var/folders/z_/4q_1dfkj13vgd3gw2rjt7_th0000gn/T/ipo_ifortr0ts3T.o -mGLOB_source_dialect=GLOB_SOURCE_DIALECT_NONE -mP1OPT_source_file_name=ipo_out.f -mP2OPT_symtab_type_copy=true CMakeFiles/cmTC_eee85.dir/CMakeFortranCompilerABI.F.o -mIPOPT_object_files=T -mIPOPT_assembly_files=/var/folders/z_/4q_1dfkj13vgd3gw2rjt7_th0000gn/T/ifortalisrVsfv3 -mIPOPT_generated_tempfiles=/var/folders/z_/4q_1dfkj13vgd3gw2rjt7_th0000gn/T/ifortelisr6xucZ -mIPOPT_embedded_object_base_name=/var/folders/z_/4q_1dfkj13vgd3gw2rjt7_th0000gn/T/iforteobjaekan9]
+  link line: [/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/ld    -dynamic -arch x86_64 -weak_reference_mismatches non-weak -macosx_version_min 10.11.5 -no_compact_unwind -o cmTC_eee85 /usr/local/bin/ifort-16.0-base/compiler/lib/for_main.o -L/usr/local/bin/ifort-16.0-base/compiler/lib -L/usr/lib CMakeFiles/cmTC_eee85.dir/CMakeFortranCompilerABI.F.o -v /usr/local/bin/ifort-16.0-base/compiler/lib/libifport.a /usr/local/bin/ifort-16.0-base/compiler/lib/libifcore.a /usr/local/bin/ifort-16.0-base/compiler/lib/libimf.a /usr/local/bin/ifort-16.0-base/compiler/lib/libsvml.a /usr/local/bin/ifort-16.0-base/compiler/lib/libipgo.a -lSystem /usr/local/bin/ifort-16.0-base/compiler/lib/libirc.a -lpthread /usr/local/bin/ifort-16.0-base/compiler/lib/libsvml.a /Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/../lib/clang/7.0.2/lib/darwin/libclang_rt.osx.a]
+    arg [/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/ld] ==> ignore
+    arg [-dynamic] ==> ignore
+    arg [-arch] ==> ignore
+    arg [x86_64] ==> ignore
+    arg [-weak_reference_mismatches] ==> ignore
+    arg [non-weak] ==> ignore
+    arg [-macosx_version_min] ==> ignore
+    arg [10.11.5] ==> ignore
+    arg [-no_compact_unwind] ==> ignore
+    arg [-o] ==> ignore
+    arg [cmTC_eee85] ==> ignore
+    arg [/usr/local/bin/ifort-16.0-base/compiler/lib/for_main.o] ==> ignore
+    arg [-L/usr/local/bin/ifort-16.0-base/compiler/lib] ==> dir [/usr/local/bin/ifort-16.0-base/compiler/lib]
+    arg [-L/usr/lib] ==> dir [/usr/lib]
+    arg [CMakeFiles/cmTC_eee85.dir/CMakeFortranCompilerABI.F.o] ==> ignore
+    arg [-v] ==> ignore
+    arg [/usr/local/bin/ifort-16.0-base/compiler/lib/libifport.a] ==> lib [/usr/local/bin/ifort-16.0-base/compiler/lib/libifport.a]
+    arg [/usr/local/bin/ifort-16.0-base/compiler/lib/libifcore.a] ==> lib [/usr/local/bin/ifort-16.0-base/compiler/lib/libifcore.a]
+    arg [/usr/local/bin/ifort-16.0-base/compiler/lib/libimf.a] ==> lib [/usr/local/bin/ifort-16.0-base/compiler/lib/libimf.a]
+    arg [/usr/local/bin/ifort-16.0-base/compiler/lib/libsvml.a] ==> lib [/usr/local/bin/ifort-16.0-base/compiler/lib/libsvml.a]
+    arg [/usr/local/bin/ifort-16.0-base/compiler/lib/libipgo.a] ==> lib [/usr/local/bin/ifort-16.0-base/compiler/lib/libipgo.a]
+    arg [-lSystem] ==> lib [System]
+    arg [/usr/local/bin/ifort-16.0-base/compiler/lib/libirc.a] ==> lib [/usr/local/bin/ifort-16.0-base/compiler/lib/libirc.a]
+    arg [-lpthread] ==> lib [pthread]
+    arg [/usr/local/bin/ifort-16.0-base/compiler/lib/libsvml.a] ==> lib [/usr/local/bin/ifort-16.0-base/compiler/lib/libsvml.a]
+    arg [/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/../lib/clang/7.0.2/lib/darwin/libclang_rt.osx.a] ==> lib [/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/../lib/clang/7.0.2/lib/darwin/libclang_rt.osx.a]
+  Library search paths: [;/usr/local/bin/ifort-16.0-base/compiler/lib;/usr/lib;/usr/lib;/usr/local/lib]
+  Framework search paths: [;/Library/Frameworks/;/System/Library/Frameworks/]
+  remove lib [System]
+  collapse lib [/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/../lib/clang/7.0.2/lib/darwin/libclang_rt.osx.a] ==> [/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/lib/clang/7.0.2/lib/darwin/libclang_rt.osx.a]
+  collapse library dir [/usr/local/bin/ifort-16.0-base/compiler/lib] ==> [/usr/local/bin/ifort-16.0-base/compiler/lib]
+  collapse library dir [/usr/lib] ==> [/usr/lib]
+  collapse library dir [/usr/local/bin/ifort-16.0-base/compiler/lib] ==> [/usr/local/bin/ifort-16.0-base/compiler/lib]
+  collapse library dir [/usr/lib] ==> [/usr/lib]
+  collapse library dir [/usr/lib] ==> [/usr/lib]
+  collapse library dir [/usr/local/lib] ==> [/usr/local/lib]
+  collapse framework dir [/Library/Frameworks/] ==> [/Library/Frameworks]
+  collapse framework dir [/System/Library/Frameworks/] ==> [/System/Library/Frameworks]
+  implicit libs: [/usr/local/bin/ifort-16.0-base/compiler/lib/libifport.a;/usr/local/bin/ifort-16.0-base/compiler/lib/libifcore.a;/usr/local/bin/ifort-16.0-base/compiler/lib/libimf.a;/usr/local/bin/ifort-16.0-base/compiler/lib/libsvml.a;/usr/local/bin/ifort-16.0-base/compiler/lib/libipgo.a;/usr/local/bin/ifort-16.0-base/compiler/lib/libirc.a;pthread;/usr/local/bin/ifort-16.0-base/compiler/lib/libsvml.a;/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/lib/clang/7.0.2/lib/darwin/libclang_rt.osx.a]
+  implicit dirs: [/usr/local/bin/ifort-16.0-base/compiler/lib;/usr/lib;/usr/local/lib]
+  implicit fwks: [/Library/Frameworks;/System/Library/Frameworks]
+
+
+Determining if the Fortran compiler supports Fortran 90 passed with the following output:
+Change Dir: /Users/home/project/module_lib/new_hi_module/build/CMakeFiles/CMakeTmp
+
+Run Build Command:"/usr/bin/make" "cmTC_82248/fast"
+/Applications/Xcode.app/Contents/Developer/usr/bin/make -f CMakeFiles/cmTC_82248.dir/build.make CMakeFiles/cmTC_82248.dir/build
+Building Fortran object CMakeFiles/cmTC_82248.dir/testFortranCompilerF90.f90.o
+/usr/local/bin/ifort     -c /Users/home/project/module_lib/new_hi_module/build/CMakeFiles/CMakeTmp/testFortranCompilerF90.f90 -o CMakeFiles/cmTC_82248.dir/testFortranCompilerF90.f90.o
+Linking Fortran executable cmTC_82248
+/usr/local/Cellar/cmake/3.6.0_1/bin/cmake -E cmake_link_script CMakeFiles/cmTC_82248.dir/link.txt --verbose=1
+/usr/local/bin/ifort       CMakeFiles/cmTC_82248.dir/testFortranCompilerF90.f90.o  -o cmTC_82248  
+
+
+Determining if the Fortran dgemm exists passed with the following output:
+Change Dir: /Users/home/project/module_lib/new_hi_module/build/CMakeFiles/CMakeTmp
+
+Run Build Command:"/usr/bin/make" "cmTC_8199c/fast"
+/Applications/Xcode.app/Contents/Developer/usr/bin/make -f CMakeFiles/cmTC_8199c.dir/build.make CMakeFiles/cmTC_8199c.dir/build
+Building Fortran object CMakeFiles/cmTC_8199c.dir/testFortranCompiler.f.o
+/usr/local/bin/ifort    -stand   -heap-arrays 1024    -c /Users/home/project/module_lib/new_hi_module/build/CMakeFiles/CMakeTmp/testFortranCompiler.f -o CMakeFiles/cmTC_8199c.dir/testFortranCompiler.f.o
+/Users/home/project/module_lib/new_hi_module/build/CMakeFiles/CMakeTmp/testFortranCompiler.f(2): warning #7373: Fixed form source is an obsolescent feature in Fortran 2008.
+      program TESTFortran
+^
+Linking Fortran executable cmTC_8199c
+/usr/local/Cellar/cmake/3.6.0_1/bin/cmake -E cmake_link_script CMakeFiles/cmTC_8199c.dir/link.txt --verbose=1
+/usr/local/bin/ifort     -stand   -heap-arrays 1024  CMakeFiles/cmTC_8199c.dir/testFortranCompiler.f.o  -o cmTC_8199c  -framework Accelerate 
+
+
+Determining if the Fortran cheev exists passed with the following output:
+Change Dir: /Users/home/project/module_lib/new_hi_module/build/CMakeFiles/CMakeTmp
+
+Run Build Command:"/usr/bin/make" "cmTC_2ccc4/fast"
+/Applications/Xcode.app/Contents/Developer/usr/bin/make -f CMakeFiles/cmTC_2ccc4.dir/build.make CMakeFiles/cmTC_2ccc4.dir/build
+Building Fortran object CMakeFiles/cmTC_2ccc4.dir/testFortranCompiler.f.o
+/usr/local/bin/ifort    -stand   -heap-arrays 1024    -c /Users/home/project/module_lib/new_hi_module/build/CMakeFiles/CMakeTmp/testFortranCompiler.f -o CMakeFiles/cmTC_2ccc4.dir/testFortranCompiler.f.o
+/Users/home/project/module_lib/new_hi_module/build/CMakeFiles/CMakeTmp/testFortranCompiler.f(2): warning #7373: Fixed form source is an obsolescent feature in Fortran 2008.
+      program TESTFortran
+^
+Linking Fortran executable cmTC_2ccc4
+/usr/local/Cellar/cmake/3.6.0_1/bin/cmake -E cmake_link_script CMakeFiles/cmTC_2ccc4.dir/link.txt --verbose=1
+/usr/local/bin/ifort     -stand   -heap-arrays 1024  CMakeFiles/cmTC_2ccc4.dir/testFortranCompiler.f.o  -o cmTC_2ccc4  -framework Accelerate -framework Accelerate 
+
+
