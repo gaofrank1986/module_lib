@@ -87,4 +87,4 @@ endif()
 ADD_SUBDIRECTORY(src)
 
 add_executable(test "./test.f90" )
-target_link_libraries(test hi2)
+target_link_libraries(test hi2_mod)

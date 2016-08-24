@@ -90,6 +90,7 @@ test_EXTERNAL_OBJECTS =
 
 test: CMakeFiles/test.dir/test.f90.o
 test: CMakeFiles/test.dir/build.make
+test: src/libhi2_mod.a
 test: CMakeFiles/test.dir/link.txt
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --bold --progress-dir=/Users/home/project/module_lib/new_hi_module/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_2) "Linking Fortran executable test"
 	$(CMAKE_COMMAND) -E cmake_link_script CMakeFiles/test.dir/link.txt --verbose=$(VERBOSE)

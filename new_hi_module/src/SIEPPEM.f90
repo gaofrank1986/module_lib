@@ -114,14 +114,17 @@ contains
       !   EVALUATE RESULTS USING Eqs.(3-6-44) AND (3-6-63)
       BETA1=p%BETA-p%NBDM+1
       RINT=0.D0  
-      DO 40 K=0,p%BETA-p%NDIM
-      PW=p%BETA-K-p%NBDM
 
-  40  RINT=RINT-(1.D0/RHOQ**PW-p%mat%H(INT(PW)))/PW*p%mat%B(K,:)
+      DO  K=0,int(p%BETA)-p%NDIM
+          PW=p%BETA-K-p%NBDM
+          RINT=RINT-(1.D0/RHOQ**PW-p%mat%H(INT(PW)))/PW*p%mat%B(K,:)
+      end do
+
+
       NBETA=p%BETA-p%NBDM  
       IF(NBETA.GE.0) RINT=RINT+p%mat%B(NBETA,:)*DLOG(RHOQ/p%mat%H(0))
 
-      DO K=p%BETA-p%NBDM+1,NPOWF
+      DO K=int(p%BETA)-p%NBDM+1,NPOWF
        PW=K-p%BETA+p%NBDM
        RINT=RINT+RHOQ**PW/PW*p%mat%B(K,:)
       ENDDO
@@ -213,18 +216,25 @@ contains
 
       SUBROUTINE COEF_B(e,p,NPOWF,XIQ,SLOP,RHOQ)
         use param_mod
-      IMPLICIT REAL*8 (A-H,O-Z)
+      !IMPLICIT REAL*8 (A-H,O-Z)
+      implicit none
       type(HSParams) ::p
       type(HSElem) ::e
+      
+      integer,intent(in) :: npowf
 
-      DIMENSION DRDX(p%NDIM),COSN(p%NDIM),          &
-     &          GCD(p%NDIM,p%NBDM),XIQ(p%NBDM),XI(p%NBDM),SLOP(p%NBDM),    &
-     &          RI(p%NDIM),X(p%NDIM),RMAT(NPOWF,NPOWF),COEFG(0:p%NPOWG),      &
-    &   SHAP(p%NODE),FQ(p%NF),A(p%NDIM)
-        !real(8),dimension(:,:),allocatable :: B
+      !! drdx,cosn,gcd,xiq,xi,slop,ri,xi,rmat,coefg,shap,fq,a
+      real(rk) :: DRDX(p%NDIM),COSN(p%NDIM),          &
+          &          gcd(p%ndim,p%nbdm),xiq(p%nbdm),xi(p%nbdm),slop(p%nbdm),    &
+          &          RI(p%NDIM),X(p%NDIM),RMAT(NPOWF,NPOWF),COEFG(0:p%NPOWG),      &
+          &   shap(p%node),fq(p%nf),a(p%ndim)
+      !real(8),dimension(:,:),allocatable :: B
+      real(rk) ::vk,rho,rhoq,r,robar,drdn,gm,fjcb
+      integer :: j,ip,m,i,jp
 
 
       VK=RHOQ/DBLE(NPOWF)
+
       DO 20 IP=0,NPOWF
       RHO=VK*DBLE(IP)
       XI=p%XIP+RHO*SLOP
@@ -238,14 +248,15 @@ contains
 
       call e%get_nrml_at(xi,cosn,fjcb,gcd)
       IF(RHO.GT.1.0D-10)THEN    
-       DRDX=RI/R
+          DRDX=RI/R
       ELSE
-       DO 10 I=1,p%NDIM; A(I)=0.D0
-       DO 10 J=1,p%NBDM            
-       A(I)=A(I)+GCD(I,J)*SLOP(J)
-10     CONTINUE                  
-       GM=DSQRT(DOT_PRODUCT(A,A))
-       DRDX=A/GM                 ! Eq.(3-6-74)
+          DO I=1,p%NDIM; A(I)=0.D0
+              DO J=1,p%NBDM            
+                  A(I)=A(I)+GCD(I,J)*SLOP(J)
+              end do
+          end do
+          GM=DSQRT(DOT_PRODUCT(A,A))
+          DRDX=A/GM                 ! Eq.(3-6-74)
       ENDIF 
       ! todo use self-defined normal
       !==============

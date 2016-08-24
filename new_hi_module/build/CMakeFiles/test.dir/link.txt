@@ -1,1 +1,1 @@
-/usr/local/bin/ifort    -stand   -heap-arrays 1024 -stand  -heap-arrays 1024 CMakeFiles/test.dir/test.f90.o  -o test  -lhi2 
+/usr/local/bin/ifort    -stand   -heap-arrays 1024 -stand  -heap-arrays 1024 CMakeFiles/test.dir/test.f90.o  -o test  src/libhi2_mod.a 

@@ -84,6 +84,7 @@
 
       call e%mapped%get_std()
       call e%get_nk()
+
       call mat%init(e%ck)
       call mat%pprint("e%ck")
       call mat%init(e%nk)

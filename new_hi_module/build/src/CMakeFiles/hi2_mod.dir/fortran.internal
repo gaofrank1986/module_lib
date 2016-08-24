@@ -1,0 +1,9 @@
+# The fortran modules provided by this target.
+provides
+ gaussm3
+ geo2d_mod
+ hs_intg
+ intgrd_funcs
+ matrix_io_mod
+ param_mod
+ util_funcs

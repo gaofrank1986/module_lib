@@ -125,6 +125,195 @@ hi2_mod/fast:
 	cd /Users/home/project/module_lib/new_hi_module/build && $(MAKE) -f src/CMakeFiles/hi2_mod.dir/build.make src/CMakeFiles/hi2_mod.dir/build
 .PHONY : hi2_mod/fast
 
+SIEPPEM.o: SIEPPEM.f90.o
+
+.PHONY : SIEPPEM.o
+
+# target to build an object file
+SIEPPEM.f90.o:
+	cd /Users/home/project/module_lib/new_hi_module/build && $(MAKE) -f src/CMakeFiles/hi2_mod.dir/build.make src/CMakeFiles/hi2_mod.dir/SIEPPEM.f90.o
+.PHONY : SIEPPEM.f90.o
+
+SIEPPEM.i: SIEPPEM.f90.i
+
+.PHONY : SIEPPEM.i
+
+# target to preprocess a source file
+SIEPPEM.f90.i:
+	cd /Users/home/project/module_lib/new_hi_module/build && $(MAKE) -f src/CMakeFiles/hi2_mod.dir/build.make src/CMakeFiles/hi2_mod.dir/SIEPPEM.f90.i
+.PHONY : SIEPPEM.f90.i
+
+SIEPPEM.s: SIEPPEM.f90.s
+
+.PHONY : SIEPPEM.s
+
+# target to generate assembly for a file
+SIEPPEM.f90.s:
+	cd /Users/home/project/module_lib/new_hi_module/build && $(MAKE) -f src/CMakeFiles/hi2_mod.dir/build.make src/CMakeFiles/hi2_mod.dir/SIEPPEM.f90.s
+.PHONY : SIEPPEM.f90.s
+
+gaussian.o: gaussian.f90.o
+
+.PHONY : gaussian.o
+
+# target to build an object file
+gaussian.f90.o:
+	cd /Users/home/project/module_lib/new_hi_module/build && $(MAKE) -f src/CMakeFiles/hi2_mod.dir/build.make src/CMakeFiles/hi2_mod.dir/gaussian.f90.o
+.PHONY : gaussian.f90.o
+
+gaussian.i: gaussian.f90.i
+
+.PHONY : gaussian.i
+
+# target to preprocess a source file
+gaussian.f90.i:
+	cd /Users/home/project/module_lib/new_hi_module/build && $(MAKE) -f src/CMakeFiles/hi2_mod.dir/build.make src/CMakeFiles/hi2_mod.dir/gaussian.f90.i
+.PHONY : gaussian.f90.i
+
+gaussian.s: gaussian.f90.s
+
+.PHONY : gaussian.s
+
+# target to generate assembly for a file
+gaussian.f90.s:
+	cd /Users/home/project/module_lib/new_hi_module/build && $(MAKE) -f src/CMakeFiles/hi2_mod.dir/build.make src/CMakeFiles/hi2_mod.dir/gaussian.f90.s
+.PHONY : gaussian.f90.s
+
+geo2D.o: geo2D.f90.o
+
+.PHONY : geo2D.o
+
+# target to build an object file
+geo2D.f90.o:
+	cd /Users/home/project/module_lib/new_hi_module/build && $(MAKE) -f src/CMakeFiles/hi2_mod.dir/build.make src/CMakeFiles/hi2_mod.dir/geo2D.f90.o
+.PHONY : geo2D.f90.o
+
+geo2D.i: geo2D.f90.i
+
+.PHONY : geo2D.i
+
+# target to preprocess a source file
+geo2D.f90.i:
+	cd /Users/home/project/module_lib/new_hi_module/build && $(MAKE) -f src/CMakeFiles/hi2_mod.dir/build.make src/CMakeFiles/hi2_mod.dir/geo2D.f90.i
+.PHONY : geo2D.f90.i
+
+geo2D.s: geo2D.f90.s
+
+.PHONY : geo2D.s
+
+# target to generate assembly for a file
+geo2D.f90.s:
+	cd /Users/home/project/module_lib/new_hi_module/build && $(MAKE) -f src/CMakeFiles/hi2_mod.dir/build.make src/CMakeFiles/hi2_mod.dir/geo2D.f90.s
+.PHONY : geo2D.f90.s
+
+intgrd_func.o: intgrd_func.f90.o
+
+.PHONY : intgrd_func.o
+
+# target to build an object file
+intgrd_func.f90.o:
+	cd /Users/home/project/module_lib/new_hi_module/build && $(MAKE) -f src/CMakeFiles/hi2_mod.dir/build.make src/CMakeFiles/hi2_mod.dir/intgrd_func.f90.o
+.PHONY : intgrd_func.f90.o
+
+intgrd_func.i: intgrd_func.f90.i
+
+.PHONY : intgrd_func.i
+
+# target to preprocess a source file
+intgrd_func.f90.i:
+	cd /Users/home/project/module_lib/new_hi_module/build && $(MAKE) -f src/CMakeFiles/hi2_mod.dir/build.make src/CMakeFiles/hi2_mod.dir/intgrd_func.f90.i
+.PHONY : intgrd_func.f90.i
+
+intgrd_func.s: intgrd_func.f90.s
+
+.PHONY : intgrd_func.s
+
+# target to generate assembly for a file
+intgrd_func.f90.s:
+	cd /Users/home/project/module_lib/new_hi_module/build && $(MAKE) -f src/CMakeFiles/hi2_mod.dir/build.make src/CMakeFiles/hi2_mod.dir/intgrd_func.f90.s
+.PHONY : intgrd_func.f90.s
+
+matrix.o: matrix.f90.o
+
+.PHONY : matrix.o
+
+# target to build an object file
+matrix.f90.o:
+	cd /Users/home/project/module_lib/new_hi_module/build && $(MAKE) -f src/CMakeFiles/hi2_mod.dir/build.make src/CMakeFiles/hi2_mod.dir/matrix.f90.o
+.PHONY : matrix.f90.o
+
+matrix.i: matrix.f90.i
+
+.PHONY : matrix.i
+
+# target to preprocess a source file
+matrix.f90.i:
+	cd /Users/home/project/module_lib/new_hi_module/build && $(MAKE) -f src/CMakeFiles/hi2_mod.dir/build.make src/CMakeFiles/hi2_mod.dir/matrix.f90.i
+.PHONY : matrix.f90.i
+
+matrix.s: matrix.f90.s
+
+.PHONY : matrix.s
+
+# target to generate assembly for a file
+matrix.f90.s:
+	cd /Users/home/project/module_lib/new_hi_module/build && $(MAKE) -f src/CMakeFiles/hi2_mod.dir/build.make src/CMakeFiles/hi2_mod.dir/matrix.f90.s
+.PHONY : matrix.f90.s
+
+param.o: param.f90.o
+
+.PHONY : param.o
+
+# target to build an object file
+param.f90.o:
+	cd /Users/home/project/module_lib/new_hi_module/build && $(MAKE) -f src/CMakeFiles/hi2_mod.dir/build.make src/CMakeFiles/hi2_mod.dir/param.f90.o
+.PHONY : param.f90.o
+
+param.i: param.f90.i
+
+.PHONY : param.i
+
+# target to preprocess a source file
+param.f90.i:
+	cd /Users/home/project/module_lib/new_hi_module/build && $(MAKE) -f src/CMakeFiles/hi2_mod.dir/build.make src/CMakeFiles/hi2_mod.dir/param.f90.i
+.PHONY : param.f90.i
+
+param.s: param.f90.s
+
+.PHONY : param.s
+
+# target to generate assembly for a file
+param.f90.s:
+	cd /Users/home/project/module_lib/new_hi_module/build && $(MAKE) -f src/CMakeFiles/hi2_mod.dir/build.make src/CMakeFiles/hi2_mod.dir/param.f90.s
+.PHONY : param.f90.s
+
+sgb/func.o: sgb/func.f90.o
+
+.PHONY : sgb/func.o
+
+# target to build an object file
+sgb/func.f90.o:
+	cd /Users/home/project/module_lib/new_hi_module/build && $(MAKE) -f src/CMakeFiles/hi2_mod.dir/build.make src/CMakeFiles/hi2_mod.dir/sgb/func.f90.o
+.PHONY : sgb/func.f90.o
+
+sgb/func.i: sgb/func.f90.i
+
+.PHONY : sgb/func.i
+
+# target to preprocess a source file
+sgb/func.f90.i:
+	cd /Users/home/project/module_lib/new_hi_module/build && $(MAKE) -f src/CMakeFiles/hi2_mod.dir/build.make src/CMakeFiles/hi2_mod.dir/sgb/func.f90.i
+.PHONY : sgb/func.f90.i
+
+sgb/func.s: sgb/func.f90.s
+
+.PHONY : sgb/func.s
+
+# target to generate assembly for a file
+sgb/func.f90.s:
+	cd /Users/home/project/module_lib/new_hi_module/build && $(MAKE) -f src/CMakeFiles/hi2_mod.dir/build.make src/CMakeFiles/hi2_mod.dir/sgb/func.f90.s
+.PHONY : sgb/func.f90.s
+
 # Help Target
 help:
 	@echo "The following are some of the valid targets for this Makefile:"
@@ -134,6 +323,27 @@ help:
 	@echo "... edit_cache"
 	@echo "... rebuild_cache"
 	@echo "... hi2_mod"
+	@echo "... SIEPPEM.o"
+	@echo "... SIEPPEM.i"
+	@echo "... SIEPPEM.s"
+	@echo "... gaussian.o"
+	@echo "... gaussian.i"
+	@echo "... gaussian.s"
+	@echo "... geo2D.o"
+	@echo "... geo2D.i"
+	@echo "... geo2D.s"
+	@echo "... intgrd_func.o"
+	@echo "... intgrd_func.i"
+	@echo "... intgrd_func.s"
+	@echo "... matrix.o"
+	@echo "... matrix.i"
+	@echo "... matrix.s"
+	@echo "... param.o"
+	@echo "... param.i"
+	@echo "... param.s"
+	@echo "... sgb/func.o"
+	@echo "... sgb/func.i"
+	@echo "... sgb/func.s"
 .PHONY : help
 
 

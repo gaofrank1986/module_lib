@@ -1,0 +1,2 @@
+/usr/bin/ar qc libhi2_mod.a  CMakeFiles/hi2_mod.dir/geo2D.f90.o CMakeFiles/hi2_mod.dir/param.f90.o CMakeFiles/hi2_mod.dir/SIEPPEM.f90.o CMakeFiles/hi2_mod.dir/matrix.f90.o CMakeFiles/hi2_mod.dir/gaussian.f90.o CMakeFiles/hi2_mod.dir/sgb/func.f90.o CMakeFiles/hi2_mod.dir/intgrd_func.f90.o
+/usr/bin/ranlib libhi2_mod.a
