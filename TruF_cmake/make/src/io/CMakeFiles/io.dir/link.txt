@@ -1,0 +1,2 @@
+/usr/bin/ar qc ../../../lib/libio.a  CMakeFiles/io.dir/Screen.f90.o CMakeFiles/io.dir/LogFile.f90.o CMakeFiles/io.dir/SStack.f90.o CMakeFiles/io.dir/utils.f90.o
+/usr/bin/ranlib ../../../lib/libio.a

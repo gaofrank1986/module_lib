@@ -1,0 +1,6 @@
+# The fortran modules provided by this target.
+provides
+ io
+ io_ext
+ io_utils
+ stack

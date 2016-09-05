@@ -1,0 +1,6 @@
+/Users/home/project/module_lib/TruF_cmake/make/CMakeFiles/edit_cache.dir
+/Users/home/project/module_lib/TruF_cmake/make/CMakeFiles/rebuild_cache.dir
+/Users/home/project/module_lib/TruF_cmake/make/CMakeFiles/main.dir
+/Users/home/project/module_lib/TruF_cmake/make/src/io/CMakeFiles/edit_cache.dir
+/Users/home/project/module_lib/TruF_cmake/make/src/io/CMakeFiles/rebuild_cache.dir
+/Users/home/project/module_lib/TruF_cmake/make/src/io/CMakeFiles/io.dir

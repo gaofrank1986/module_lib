@@ -1,0 +1,15 @@
+10.0    1.0   1.0    1.0
+1.0     0.0    3.0
+180    180   30
+0
+
+!---------
+water depth, radius, draft,amplitude
+wk1,wk2,step
+
+        READ(1,*)  H, A, BH, AMP 
+        ! 
+        !print *,h,a,bh,amp
+        READ(1,*)  Wk1, WK2, DWK 
+        READ(1,*)  LLOD, MMOD, NNOD 
+         READ(1,*) KOUT_FLAG 
